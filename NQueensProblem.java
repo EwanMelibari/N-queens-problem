@@ -9,12 +9,35 @@ public class NQueensProblem {
     }
 
     public void solve(){
+        //start from column 0 solving
         if(setQueens(0)){
             printQueens();
+        }else{
+            System.out.println("There is no solution...");
         }
     }
 
     private boolean setQueens(int colIndex){
+        //base case
+        if(colIndex == numOfQueens){
+            return true;
+        }
+        //iterate over rows considering all possible positions
+        for(int rowIndex = 0; rowIndex < numOfQueens; rowIndex++){
+            if(isPlaceValid(rowIndex, colIndex)){
+                chessBoard[rowIndex][colIndex] = 1;
+
+                if(setQueens(colIndex + 1)){
+                    return true;
+                }
+
+                //backtrack
+                chessBoard[rowIndex][colIndex] = 0;
+
+            }
+        }
+
+        //if no valid position is found, return false 
         return false;
     }
 
@@ -37,4 +60,6 @@ public class NQueensProblem {
 
     }
     
+}
+
 }
