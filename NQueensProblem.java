@@ -41,24 +41,24 @@ public class NQueensProblem {
         return false;
     }
 
-    private boolean isPlaceValid(int rowIndexm, int columnIndex){
+    private boolean isPlaceValid(int rowIndex, int columnIndex){
 
         //check if there is a queen in the same column
         for(int i = 0; i< columnIndex; i++){
-            if(chessBoard[i][columnIndex] == 1){
+            if(chessBoard[rowIndex][i] == 1){
                 return false;
             }
         }
 
         //check if there is a queen in the upper left diagonal
-        for(int i = rowIndexm, j = columnIndex; i>=0 && j>=0; i--, j--){
+        for(int i = rowIndex, j = columnIndex; i>=0 && j>=0; i--, j--){
             if(chessBoard[i][j] == 1){
                 return false;
             }
         }
 
         //check if there is a queen in the lower left diagonal
-        for(int i = rowIndexm, j = columnIndex; i<chessBoard.length && j>=0; i++, j--){
+        for(int i = rowIndex, j = columnIndex; i<chessBoard.length && j>=0; i++, j--){
             if(chessBoard[i][j] == 1){
                 return false;
             }
@@ -73,14 +73,15 @@ public class NQueensProblem {
             for(int j = 0; j < chessBoard.length; j++){
 
                 if(chessBoard[i][j] == 1){
-                    System.out.print(" ♕ ");
+                    System.out.print(" * ");
                 }else{
-                    System.out.println(" - ");
+                    System.out.print(" - ");
                 }
 
-                System.out.println();                
+                              
             }
-
+            // to let the chess board in the right shape...
+            System.out.println(); 
     }
     
 }
