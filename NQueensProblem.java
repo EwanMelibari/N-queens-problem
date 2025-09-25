@@ -42,7 +42,30 @@ public class NQueensProblem {
     }
 
     private boolean isPlaceValid(int rowIndexm, int columnIndex){
-        return false;
+
+        //check if there is a queen in the same column
+        for(int i = 0; i< columnIndex; i++){
+            if(chessBoard[i][columnIndex] == 1){
+                return false;
+            }
+        }
+
+        //check if there is a queen in the upper left diagonal
+        for(int i = rowIndexm, j = columnIndex; i>=0 && j>=0; i--, j--){
+            if(chessBoard[i][j] == 1){
+                return false;
+            }
+        }
+
+        //check if there is a queen in the lower left diagonal
+        for(int i = rowIndexm, j = columnIndex; i<chessBoard.length && j>=0; i++, j--){
+            if(chessBoard[i][j] == 1){
+                return false;
+            }
+        }
+
+        //if no queen is found in the same column, upper left diagonal, or lower left diagonal, return true
+        return true;
     }
 
     private void printQueens(){
